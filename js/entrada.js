@@ -50,7 +50,7 @@ function E_inicio()
                     camera.fadeOut(1000,0,0,0);
 
                     camera.once('camerafadeoutcomplete',() =>{
-                        this.scene.start('SceneCarga');
+                        this.scene.start('main');
                     });
                 });
 			}
