@@ -1,6 +1,7 @@
 var main = {
 	key: 'main',
 	active: false,
+	preload: preload,
 	create: inicio,
 	update: actualiza,
 	extends: Phaser.Scene
@@ -80,6 +81,10 @@ var amarillaJues;
 var AudiosD;
 var tomaAmarilla;
 var atencion;
+
+function preload(){
+
+}
 
 function inicio() {
 			// establecer orientacion de pantalla horizontal
