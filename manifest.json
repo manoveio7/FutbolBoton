@@ -3,17 +3,17 @@
   "name": "FutbolBoton",
   "icons": [
     {
-      "src": "icon-192.png",
+      "src": "icono.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "icon-512.png",
+      "src": "icono.png",
       "type": "image/png",
       "sizes": "512x512"
     }
   ],
-  "start_url": "/tu-nombre-de-repo/",
+  "start_url": "./index.html",
   "background_color": "#000000",
   "display": "standalone",
   "theme_color": "#000000",
