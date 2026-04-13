@@ -1,21 +1,22 @@
-const cacheName = 'futbol-boton-v4';
-const assets = [
-  './',
-  './index.html'
-];
+// Nombre del caché (puedes dejarlo vacío o con un nombre genérico)
+const CACHE_NAME = 'FutbolBoton';
 
-self.addEventListener('install', e => {
-  e.waitUntil(
-    caches.open(cacheName).then(cache => {
-      cache.addAll(assets);
-    })
-  );
+// No listamos assets porque quieres que cargue online
+const ASSETS_TO_CACHE = [];
+
+// Instalación: Solo se activa para cumplir el requisito de PWA
+self.addEventListener('install', (event) => {
+    self.skipWaiting();
+    console.log('SW: Instalado (Modo Online)');
 });
 
-self.addEventListener('fetch', e => {
-  e.respondWith(
-    caches.match(e.request).then(res => {
-      return res || fetch(e.request);
-    })
-  );
+// Activación: Toma el control de la página inmediatamente
+self.addEventListener('activate', (event) => {
+    event.waitUntil(clients.claim());
+});
+
+// Interceptamos las peticiones pero las mandamos directo a la RED
+self.addEventListener('fetch', (event) => {
+    // No busca en caché, va directo a internet
+    event.respondWith(fetch(event.request));
 });
