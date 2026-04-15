@@ -40,6 +40,9 @@ function E_inicio()
                 });
 
                 this.input.on('pointerdown', () => {
+					if (!this.scale.isFullscreen) 
+          				  this.scale.startFullscreen();
+						
                     if(toco)
                 	    return;
                 	
