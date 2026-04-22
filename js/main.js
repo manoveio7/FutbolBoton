@@ -255,12 +255,29 @@ function inicio() {
 	pantRota = this.add.image(0,0,'pantRota').setDepth(122).setOrigin(0).setAlpha(0).setDisplaySize(cam.width,cam.height)
 	btnReiniciar = this.add.image(cam.width-100,250,'btnReiniciar').setScale(0.5).setDepth(200).setAlpha(0).setInteractive()
 
-    // --- CAMBIO MULTIJUGADOR: Recibir movimiento del oponente ---
+ /*   // --- CAMBIO MULTIJUGADOR: Recibir movimiento del oponente ---
     socket.on('oponente_mueve', (datos) => {
         let plOponente = jugA.children.entries[datos.idx];
         estaEscena.physics.moveToObject(plOponente, {x: datos.px, y: datos.py}, -datos.dist);
         equipoA = !equipoA; // Alternar turno
-    });
+    });*/
+	// --- Al final de la función inicio() ---
+
+socket.on('configuracion_inicial', (datos) => {
+    console.log("El servidor dice que saca:", datos.equipoQueSaca);
+    
+    // Forzamos a que ambos tengan el mismo inicio
+    if (datos.equipoQueSaca === 'AZUL') {
+        equipoA = true;
+        textHabla.setText('AZUL'); // Asegúrate que textHabla sea accesible
+    } else {
+        equipoA = false;
+        textHabla.setText('ROJO');
+    }
+    
+    // Aquí puedes disparar la lógica de inicio de partido
+    // que antes se ejecutaba sola
+});
 }
 
 // ... (Las funciones intermedias: finalizarTodo, mostrarJugFin, alertaPelota, etc. se mantienen igual) ...
